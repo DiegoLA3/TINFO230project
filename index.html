@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("include-html");
+          includeHTML();
+        }
+      }      
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+};
+</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AVGCTB - Home</title>
+	<link rel="icon" type="image" href="logo.png">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body class="flex-container">
+
+	<!-- defines the side bar -->
+	<div include-html="sidebar.html"></div>
+	<script>
+	includeHTML();
+	</script>
+	
+	<!-- defines the main content pane -->
+	<div id="content-pane">
+		<h1 id="page-title">A Very Good Crypto Trading Bot</h1>
+		<div id="page-content">
+			<section id="what-is-this-app">
+				<h2>What is this?</h2>
+				<div class="text-content-box">
+					<p>
+						In short, A Very Good Crypto Trading Bot (AVGCTB) is an app that aims to 
+						help cryptocurrency investors. The goal is to help you, the investor, to 
+						make <span class="bold">smart investment decisions</span> and earn more 
+						money.
+					</p>
+				</div>
+			</section>
+			<hr>
+			<section id="how-does-it-work">
+				<h2>How does it work?</h2>
+				<div class="text-content-box">
+					<p>
+						As the name implies, A Very Good Crypto Trading Bot uses a 
+						<span class="bold">crypto trading bot</span> to trade cryptocurrency. 
+						Investors can connect their cryptocurrency exchange accounts and the bot 
+						will trade on their behalf.
+					</p>
+				</div>
+				<div class="img-box flex-container">
+					<img class="pic-grid-item" width=200 height=400 src="UIM1.png">
+					<img class="pic-grid-item" width=200 height=400 src="UIM2.png">
+				</div>
+				<div class="text-content-box">
+					<p>
+						With the app, you will be able to login with your coinbase and/or behance 
+						account. If you happen to be a new investor, you will be able to sign up 
+						with either coinbase or behance (or both) from within the app.
+					</p>
+				</div>
+				<hr>
+				<br>
+				<div class="img-box flex-container">
+					<img class="pic-grid-item" width=200 height=400 src="UIM3.png">
+					<img class="pic-grid-item" width=200 height=400 src="UIM5.png">
+				</div>
+				<div class="text-content-box">
+					<p>
+						The websites that the crypto trading bot uses to get information range from
+						social media sites like Twitter to various news sites. The information 
+						gained from these sites is then fed into a sentiment analysis engine.
+					</p>
+				</div>
+				<hr>
+				<br>
+				<div class="img-box flex-container">
+					<img class="pic-grid-item" width=200 height=400 img src="UIM4.png"> 
+					<img class="pic-grid-item" width=200 height=400 img src="UIM6.png">
+				</div>
+				<div class="text-content-box">
+					<p>
+						The bot will use the results it recieves from the sentiment analysis engine 
+						to determine the best possible trades for you, along with when the best time
+						to buy or sell is so that you get the best possible outcome from your trading.
+						
+					</p>
+				</div>
+			</section>
+			<hr>
+			<section id="crypto-history-chart">
+				<h2><span class="underline">AVGCTB History Charts</span></h2>
+				<div class="img-box flex-container">
+					<img class="pic-grid-item" width=700 height=372 src="https://images.theconversation.com/files/380042/original/file-20210121-23-1bblai1.png?ixlib=rb-1.1.0&q=45&auto=format&w=1000&fit=clip" width=550 height=350>
+					<img class="pic-grid-item" width=700 height=372 src="https://miro.medium.com/max/700/1*s-HkYvBq7QyIzzY2ztRJ_w.png">
+				</div>
+				<div class="text-content-box">
+					<p>
+						(Filler text)<br>
+						Our Bots are able to interpret and understand the data in online charts and 
+						is able to do so before any other bots could read the market. Not only is 
+						our app way more responsive than our competition, it gives you a really 
+						unique, hands-on feel when you scroll through the charts. In addition, our 
+						Bots process charts 2.3% faster than any other bot out there currently. Our 
+						Bots are used by traders to take advantage of the cryptocurrency markets 
+						that trade 24/7 all over the world. The advantage with our bot is that it 
+						have over investors where they can react quicker. Meanwhile, most investors 
+						also don't have the time to dedicate to always get the best trade something 
+						that bots can do.
+					</p>
+				</div>
+			</section>
+			
+		<!-- defines the footer -->
+			<footer>
+				<br>
+				<p>&copy; AVGCTB Inc. </p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
